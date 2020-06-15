@@ -1,6 +1,6 @@
 from gtts import gTTS
 import speech_recognition as sr
-import os
+import playsound
 import time
 from acti import activity
 from youtu import youtube
@@ -9,9 +9,15 @@ from sansür_ekleme import delete
 from bs2 import amazon
 
 
+
          
 
 def listen():
+
+
+
+
+
     with sr.Microphone() as source:
 
         r = sr.Recognizer()
@@ -28,6 +34,7 @@ def listen():
 
         except sr.UnknownValueError:
             print("ağa anlamadım")
+            
         
 
 
@@ -55,12 +62,25 @@ def komut(data):
 def play(data):
     tts = gTTS(text=str(data),lang="tr")
     tts.save("merhaba.mp3")
-    os.system("merhaba.mp3")
+    playsound.playsound('merhaba.mp3', True)
 
 
 data = ''   
 
+wait = 0
+
+
 while(data != 'çıkış'):
+
     data = listen()
-    komut(data)
+
+    if data.split() == 'bekle':
+        wait = 1
+
+    if data.split() == "devam":
+        wait = 0
+
+
+    if wait !=  1:
+        komut(data)
     play(data)

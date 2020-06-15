@@ -16,7 +16,7 @@ def activity():
         access = float(data["accessibility"])
 
 
-        if access == 1 and access >= 0.7:
+        if access == 1 and accessArkadaşlar ufak bı düşünce herkese açık bı grup olduğu için hocada burda olmasın ? >= 0.7:
             print("The activity very hard to do")
 
         elif access >= 0.5 and access < 0.7:
